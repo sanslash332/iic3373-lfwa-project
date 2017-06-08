@@ -16,9 +16,9 @@ load face_p146_small.mat
 % load multipie_independent.mat
 
 disp('Model visualization');
-visualizemodel(model,1:13);
-disp('press any key to continue');
-pause;
+%visualizemodel(model,1:13);
+%disp('press any key to continue');
+%pause;
 
 
 % 5 levels for each octave
@@ -35,12 +35,15 @@ else
     error('Can not recognize this model');
 end
 
-ims = dir('images/*.jpg');
-for i = 1:length(ims),
+ims = dir('./face_lib/images/*.jpg')
+disp("Entering...")
+for i = 1:length(ims)
+    disp("Entered")
     fprintf('testing: %d/%d\n', i, length(ims));
     im = imread(['images/' ims(i).name]);
     clf; imagesc(im); axis image; axis off; drawnow;
     
+    size(im)
     tic;
     bs = detect(im, model, model.thresh);
     bs = clipboxes(im, bs);
