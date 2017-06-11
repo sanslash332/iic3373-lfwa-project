@@ -11,7 +11,10 @@ op.show =1;
 op.b.name = 'fisher';
 Indice_SFS = Bfs_sfs(Carac_clean,persona(indice_training),op);
 
+Indice = Indice_clean(Indice_SFS);
+
 save('paso2.mat','caracteristicas','persona','labels_c','foto','Indice_SFS','Indice_clean');
+
 %% Modelos
 
 X = Carac_norm(indice_training,Indice_clean(Indice_SFS));
@@ -80,6 +83,7 @@ c = cvpartition(persona,'KFold',4);
 accuracy = [];
 
 for k=1:4
+    
     X_training = Carac_norm(c.training(k),Indice_clean(Indice_SFS));
     Y_training = persona(c.training(k));
     X_test =  Carac_norm(c.test(k),Indice_clean(Indice_SFS));
