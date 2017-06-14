@@ -1,4 +1,4 @@
-face_points = load('./raw_faces_points.mat');
+face_points = load('./raw_faces_points_2.mat');
 
 r_eye_points = 10:15;
 l_eye_points = 21:26;

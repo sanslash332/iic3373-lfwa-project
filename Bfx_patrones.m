@@ -1,6 +1,6 @@
 function [X,Xn] = Bfx_patrones(I,R,options)
 
-Regions = options.R;
+% Es una est
 
 for k=1:length(Regions)
     Ik = imcrop(I,Regions(k));
