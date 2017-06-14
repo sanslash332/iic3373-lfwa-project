@@ -18,12 +18,7 @@ for ii = 1:length(face_points.detections)
   data = face_points.detections{ii};
   filename = data{1};
   points = data{2}.xy;
-  
-  newpoints(:,1) = (1 - fit_factor)*points (:,1) + 0.5*fit_factor*(points (:,1) + points (:,3));
-  newpoints(:,3) = (1 - fit_factor)*points (:,3) + 0.5*fit_factor*(points (:,1) + points (:,3));
-  
-  newpoints(:,2) = (1 - fit_factor)*points (:,2) + 0.5*fit_factor*(points (:,2) + points (:,4));
-  newpoints(:,4) = (1 - fit_factor)*points (:,4) + 0.5*fit_factor*(points (:,2) + points (:,4));
+
   
   
   fprintf("Processing %d/%d : %s\n", ii, length(face_points.detections), char(filename));
@@ -38,6 +33,14 @@ for ii = 1:length(face_points.detections)
     stru.mouth = zeros(mouth_size);
   else  
     img = imread(filename);
+    
+    
+      newpoints(:,1) = (1 - fit_factor)*points (:,1) + 0.5*fit_factor*(points (:,1) + points (:,3));
+      newpoints(:,3) = (1 - fit_factor)*points (:,3) + 0.5*fit_factor*(points (:,1) + points (:,3));
+
+      newpoints(:,2) = (1 - fit_factor)*points (:,2) + 0.5*fit_factor*(points (:,2) + points (:,4));
+      newpoints(:,4) = (1 - fit_factor)*points (:,4) + 0.5*fit_factor*(points (:,2) + points (:,4));
+  
   
     % [minx miny maxx maxy]
     r_eye_positions = points(r_eye_points,:);
