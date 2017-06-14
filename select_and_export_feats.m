@@ -1,4 +1,4 @@
-face_points = load('./raw_faces_points.mat');
+face_points = load('./raw_faces_points_2.mat');
 
 r_eye_points = 10:15;
 l_eye_points = 21:26;
@@ -12,10 +12,19 @@ id = affine2d(eye(3));
 
 cropped_parts = cell(length(face_points.detections), 1);
 
+fit_factor = 0.5;
+
 for ii = 1:length(face_points.detections)
   data = face_points.detections{ii};
   filename = data{1};
   points = data{2}.xy;
+  
+  newpoints(:,1) = (1 - fit_factor)*points (:,1) + 0.5*fit_factor*(points (:,1) + points (:,3));
+  newpoints(:,3) = (1 - fit_factor)*points (:,3) + 0.5*fit_factor*(points (:,1) + points (:,3));
+  
+  newpoints(:,2) = (1 - fit_factor)*points (:,2) + 0.5*fit_factor*(points (:,2) + points (:,4));
+  newpoints(:,4) = (1 - fit_factor)*points (:,4) + 0.5*fit_factor*(points (:,2) + points (:,4));
+  
   
   fprintf("Processing %d/%d : %s\n", ii, length(face_points.detections), char(filename));
   
@@ -59,7 +68,7 @@ for ii = 1:length(face_points.detections)
     stru.l_eye = l_eye;
     stru.nose = nose;
     stru.mouth = mouth;
-  
+    
     cropped_parts{ii} = stru;
   end
   
