@@ -1,72 +1,8 @@
-% [X,Xn,S] = Bfx_files(f,opf)               % gemetric and intensity features
-% [X,Xn,S] = Bfx_files(f,opf,labelling)     % features + labelling
-%
-% Toolbox: Balu
-%
-%    Feature extraction from a set of files.
-%
-%    This function calls feature extraction procedures of all
-%    images defined in f. See example to see how it works.
-%
-%    X is the feature matrix (one feature per column, one sample per row),
-%    Xn is the list of feature names (see Example to see how it works).
-%
-%    S is the list of filenames of the images. The features of file S(i,:)
-%    are in row X(i,:).
-%
-% Example:
-%    f.path          = '';  % current directory or a path directory
-%    f.prefix        =  'testimg';   f.extension   =  '.jpg';
-%    f.digits        = 1;
-%    f.gray          = 0;
-%    f.subsample     = 1;
-%    f.resize        = 1;
-%    f.imgmin        = 1;
-%    f.imgmax        = 2;
-%    f.window        = [];
-%    f.negative      = 0;
-%    f.sequence      = 1:f.imgmax;
-%
-%    b(1).name = 'gabor';       b(1).options.show=1;         % Gabor features
-%                               b(1).options.Lgabor  = 8;    % number of rotations
-%                               b(1).options.Sgabor  = 8;    % number of dilations (scale)
-%                               b(1).options.fhgabor = 2;    % highest frequency of interest
-%                               b(1).options.flgabor = 0.1;  % lowest frequency of interest
-%                               b(1).options.Mgabor  = 21;   % mask size
-%                               b(1).options.type    = 2;    % intensity
-%
-%    b(2).name = 'basicint';    b(2).options.show    = 1;    % Basic intensity features
-%                               b(2).options.type    = 2;    % intensity
-%
-%    b(3).name = 'lbp';         b(3).options.show    = 1;    % Fourier
-%                               b(3).options.vdiv    = 2;    % vertical div
-%                               b(3).options.hdiv    = 2;    % horizontal div
-%                               b(3).options.type    = 2;    % intensity
-%
-%
-%    b(4).name = 'hugeo';       b(4).options.show    = 1;    % Hu moments
-%                               b(4).options.type    = 1;    % geometric
-%
-%    b(5).name = 'flusser';     b(5).options.show    = 1;    % Flusser moments
-%                               b(5).options.type    = 1;    % geometric
-%
-%    b(6).name = 'fourierdes';  b(6).options.show    = 1;    % Fourier
-%                               b(6).options.Nfourierdes=12; % descriptors
-%                               b(6).options.type    = 1;    % geometric
-%
-%    opf.b = b;
-%    opf.channels = 'RGB';                                   % RGB images
-%    opf.segmentation = 'Bim_segbalu';                       % segmentation
-%    opf.param        = -0.05;                               % parameters of segmentation
-%    opf.intensity = 1;
-%
-%    [X,Xn,S] = Bfx_files(f,opf);
-%
-% (c) D.Mery, PUC-DCC, 2011
-% http://dmery.ing.puc.cl
+function [X,Xn] = Bfx_patrones(I,R,options)
 
-function [X,Xn] = Bfx_patrones(I,R,opf)
+% Es una est
 
+<<<<<<< HEAD
 
 n = length(opf.b);
 kg = 0;
@@ -282,4 +218,13 @@ if nc>0
     delete(ff);
 else
     error('Bfx_files error: Colors %s are recognized',colorstr);
+=======
+for k=1:length(Regions)
+    Ik = imcrop(I,Regions(k));
+    [Xk,Xnk] = Bfx_int(Ik,R,options);
+    X = [X Xk];
+    Xn = [Xn Xnk];
+end
+
+>>>>>>> 8e0fb8d98bb3af33ff5cbbf29e04fe2105f82814
 end
