@@ -12,7 +12,7 @@ id = affine2d(eye(3));
 
 cropped_parts = cell(length(face_points.detections), 1);
 
-fit_factor = 0.5;
+fit_factor = 0.2;
 
 for ii = 1:length(face_points.detections)
   data = face_points.detections{ii};
