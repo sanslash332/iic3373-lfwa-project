@@ -73,6 +73,7 @@ kg = 0;
 ki = 0;
 opg = [];
 opi = [];
+
 for i=1:n
     if opf.b(i).options.type == 1
         kg = kg+1;
@@ -103,6 +104,7 @@ end
 
 ct = 'gRGBHSVLab12';
 co = zeros(length(ct),1);
+
 if isfield(opf,'channels')
     ch = opf.channels;
     if compare(class(ch),'char')==0
