@@ -35,8 +35,9 @@ for ii = 1:length(face_points.detections)
       f = figure();
       imagesc(unwrapped)
       axis('image')
-     
-      fprintf("Press key for next image.")
+      colormap gray
+      
+      fprintf("Press key for ne xt image.")
       pause
       close(f)
     end
