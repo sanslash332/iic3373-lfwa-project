@@ -5,14 +5,14 @@ l_eye_points = 21:26;
 nose_points  = 1:9;
 mouth_points = 32:51;
 
-eyes_size = [30 40];
-nose_size = [60 30];
-mouth_size = [40 55];
+eyes_size = [15 20];
+nose_size = [40 15];
+mouth_size = [20 23];
 id = affine2d(eye(3));
 
 cropped_parts = cell(length(face_points.detections), 1);
 
-fit_factor = 0.2;
+fit_factor = 0.3;
 
 for ii = 1:length(face_points.detections)
   data = face_points.detections{ii};
