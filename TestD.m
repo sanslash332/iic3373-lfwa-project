@@ -29,7 +29,7 @@ for k=1:length(partes_test)
         l_eye = im2double(partes_test{k}.l_eye(:));
         r_eye = im2double(partes_test{k}.r_eye(:));
         mouth = im2double(partes_test{k}.mouth(:));
-        nose = im2double(partes_test{k}.nose(:));
+        nose =  im2double(partes_test{k}.nose(:));
         
         offset = [0,length(r_eye) , length(l_eye), size(mouth,1) ,size(nose,1)];
         offset = cumsum(offset)+1;
