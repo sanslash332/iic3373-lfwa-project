@@ -1,3 +1,5 @@
+%% Obtención de Parches Tal cual, sin ajuste por resolución
+
 face_points = load('./raw_faces_points_2.mat');
 
 r_eye_points = 10:15;
@@ -5,18 +7,19 @@ l_eye_points = 21:26;
 nose_points  = 1:9;
 mouth_points = 32:51;
 
-r_eye_size = [30 40];
-l_eye_size = [30 40];
-nose_size  = [80 30];
-mouth_size = [40 46];
+% r_eye_size = [15 20];
+% l_eye_size = [15 20];
+% nose_size  = [40 15];
+% mouth_size = [20 23];
 
 id = affine2d(eye(3));
 
 all_data = cell(length(face_points.detections), 1);
 
-fit_factor = 0.3;
+fit_factor = 0.01;
 
 for ii = 1:length(face_points.detections)
+    
   data = face_points.detections{ii};
   filename = data{1};
   points = data{2}.xy;
@@ -38,6 +41,7 @@ for ii = 1:length(face_points.detections)
     stru.success = 0;
     
   else  
+      
     img = imread(filename);
   
     stru.filename = filename;
@@ -53,17 +57,21 @@ for ii = 1:length(face_points.detections)
     nose_ranges =  [min(nose_positions(:,1))  min(nose_positions(:,2))  max(nose_positions(:,3))  max(nose_positions(:,4))];
     mouth_ranges = [min(mouth_positions(:,1)) min(mouth_positions(:,2)) max(mouth_positions(:,3)) max(mouth_positions(:,4))];
   
-    r_eye_crop = imref2d(r_eye_size, [r_eye_ranges(1) r_eye_ranges(3)], [r_eye_ranges(2) r_eye_ranges(4)]);
+    r_eye_crop = imref2d(round([diff([r_eye_ranges(1) r_eye_ranges(3)]) diff([r_eye_ranges(2) r_eye_ranges(4)])]), [r_eye_ranges(1) r_eye_ranges(3)], [r_eye_ranges(2) r_eye_ranges(4)]);
     r_eye = imwarp(img, id, 'cubic', 'OutputView', r_eye_crop);
   
-    l_eye_crop = imref2d(l_eye_size, [l_eye_ranges(1) l_eye_ranges(3)], [l_eye_ranges(2) l_eye_ranges(4)]);
+  
+    l_eye_crop = imref2d(round([diff([l_eye_ranges(1) l_eye_ranges(3)]),diff([l_eye_ranges(2) l_eye_ranges(4)])]), [l_eye_ranges(1) l_eye_ranges(3)], [l_eye_ranges(2) l_eye_ranges(4)]);
     l_eye = imwarp(img, id, 'cubic', 'OutputView', l_eye_crop);
+ 
   
-    nose_crop = imref2d(nose_size, [nose_ranges(1) nose_ranges(3)], [nose_ranges(2) nose_ranges(4)]);
+    nose_crop = imref2d(round([diff([nose_ranges(1) nose_ranges(3)]),diff([nose_ranges(2) nose_ranges(4)])]), [nose_ranges(1) nose_ranges(3)], [nose_ranges(2) nose_ranges(4)]);
     nose = imwarp(img, id, 'cubic', 'OutputView', nose_crop);
+
   
-    mouth_crop = imref2d(mouth_size, [mouth_ranges(1) mouth_ranges(3)], [mouth_ranges(2) mouth_ranges(4)]);
+    mouth_crop = imref2d(round([diff([mouth_ranges(1) mouth_ranges(3)]),diff([mouth_ranges(2) mouth_ranges(4)])]), [mouth_ranges(1) mouth_ranges(3)], [mouth_ranges(2) mouth_ranges(4)]);
     mouth = imwarp(img, id, 'cubic', 'OutputView', mouth_crop);
+  
   
     stru.success = 1;
     stru.data = {r_eye, l_eye, nose, mouth};
@@ -74,4 +82,4 @@ for ii = 1:length(face_points.detections)
   
 end
 
-save('all_data.mat', 'all_data');
+save('Parches.mat', 'all_data');
