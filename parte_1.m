@@ -3,8 +3,8 @@
 
 b(1).name = 'lbp';
 b(1).options.type = 2;
-b(1).options.vdiv = 1;                  % one vertical divition
-b(1).options.hdiv = 1;                  % one horizontal divition
+b(1).options.vdiv = 2;                  % one vertical divition
+b(1).options.hdiv = 4;                  % one horizontal divition
 b(1).options.semantic = 0;              % classic LBP
 b(1).options.samples  = 8;              % number of neighbor samples
 b(1).options.mappingtype = 'u2';  
@@ -21,8 +21,8 @@ b(3).options.show = 0;
 
 b(4).name = 'hog';
 b(4).options.type = 2;
-b(4).options.nj = 3;
-b(4).options.ni = 3;
+b(4).options.nj = 20;
+b(4).options.ni = 10;
 b(4).options.B = 9; % Angles
 b(4).options.show = 0;
 
@@ -49,7 +49,7 @@ opf.channels = 'g';              % grayscale image
 
 [features,features_labels,S] = Bfx_files(f,opf);
 
-%
+
 persona =ones(length(S),1);
 foto = ones(length(S),1);
 
@@ -153,4 +153,4 @@ for k=1:length(valid_indexes)
   foto(k)    = uint32(str2num(filename(11:14)));
 end
 
-save('paso1_patches.mat','features','features_labels', 'persona', 'foto');
+save('paso1_patches.mat','features','features_labels', 'persona', 'foto','valid_indexes');
