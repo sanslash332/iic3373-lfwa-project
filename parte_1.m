@@ -124,6 +124,7 @@ end
 
 valid_indexes = find(mask);
 features = zeros(length(valid_indexes), test_features_length);
+features_labels = zeros(length(valid_indexes), 24);
 persona  = uint32(zeros(length(valid_indexes), 1));
 foto     = uint32(zeros(length(valid_indexes), 1));
 
@@ -144,6 +145,7 @@ for k=1:length(valid_indexes)
   end
   
   features(k, :) = [x_cell{:}];
+  features_labels(k, :) = [xn_cell{:}];
   persona(k) = uint32(str2num(filename(6:9)));
   foto(k)    = uint32(str2num(filename(11:14)));
 end
