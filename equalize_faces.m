@@ -4,7 +4,7 @@ destin_folder = "./faces_lfwa_3_eq/";
 
 mkdir(char(destin_folder));
 
-show_selected_reg = false;
+show_selected_reg = true;
 
 for i = 1:length(face_points.detections)
   data = face_points.detections{i};

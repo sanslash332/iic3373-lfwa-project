@@ -1,6 +1,6 @@
 compile;
 
-image_index = 1221;
+image_index = 16;
 
 load face_p146_small.mat
 load('raw_faces_points_2.mat', 'detections')
