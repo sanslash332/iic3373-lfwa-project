@@ -5,10 +5,10 @@ l_eye_points = 21:26;
 nose_points  = 1:9;
 mouth_points = 32:51;
 
-r_eye_size = [15 20];
-l_eye_size = [15 20];
-nose_size  = [40 15];
-mouth_size = [20 23];
+r_eye_size = [30 40];
+l_eye_size = [30 40];
+nose_size  = [80 30];
+mouth_size = [40 46];
 
 id = affine2d(eye(3));
 
