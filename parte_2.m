@@ -1,11 +1,11 @@
-% Selección de Caracteristicas y las otras cosas, pero estoy testeando con
+% Selecciï¿½n de Caracteristicas y las otras cosas, pero estoy testeando con
 % la app por mientras
 
 load('paso1.mat')
-load('X_parches.mat');
-caracteristicas = [X_faces X_parches];
+%load('X_parches.mat');
+%caracteristicas = [X_faces X_parches];
 
-Carac_norm = Bft_norm(caracteristicas,0);
+Carac_norm = Bft_norm(features,0);
 indice_training = logical(foto < 11);
 indice_test = not(indice_training);
 
