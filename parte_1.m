@@ -37,7 +37,7 @@ b(5).options.Mgabor  = 21;                % mask size
 b(5).options.show    = 0;  
 
 
-f.path          = '.\faces_lfwa_3_eq\';  % directory of the images
+f.path          = char("./faces_lfwa_3_eq/");  % directory of the images
 f.prefix        = '*';
 f.extension     = '.png';
 f.gray          = 1;
