@@ -15,13 +15,13 @@ else
     error('Can not recognize this model');
 end
 
-ims = dir('faces_lfwa_3/*.png');
+ims = dir('faces_lfwa_3_eq/*.png');
 
 detections = {length(ims), 1};
 
 for i = 1:length(ims)
     fprintf('testing: %d/%d\n', i, length(ims));
-    im = repmat(imread(['faces_lfwa_3/' ims(i).name]), 1,1,3);
+    im = repmat(imread(['faces_lfwa_3_eq/' ims(i).name]), 1,1,3);
     
     thres = model.thresh;
     for ty = 1:max_tries

@@ -1,19 +1,29 @@
-load('paso1.mat')
+% Selecci�n de Caracteristicas y las otras cosas, pero estoy testeando con
+% la app por mientras
 
-Carac_norm = Bft_norm(caracteristicas,0);
+load('paso1.mat')
+%load('X_parches.mat');
+%caracteristicas = [X_faces X_parches];
+
+Carac_norm = Bft_norm(features,0);
 indice_training = logical(foto < 11);
 indice_test = not(indice_training);
 
 Indice_clean = Bfs_clean(Carac_norm(indice_training,:));
 Carac_clean = Carac_norm(indice_training,Indice_clean);
-op.m = 100;       
-op.show =1;
-op.b.name = 'fisher';
-Indice_SFS = Bfs_sfs(Carac_clean,persona(indice_training),op);
+[PCA_Matrix,Score,~] = pca(Carac_clean,'NumComponents',200);
 
-Indice = Indice_clean(Indice_SFS);
+Model1 = fitcdiscr(Score,persona(indice_training),'DiscrimType','pseudoLinear');
+Model2 = fitcknn(Score, persona(indice_training),'NumNeighbors',1);
 
-save('paso2.mat','caracteristicas','persona','labels_c','foto','Indice_SFS','Indice_clean');
+Caracteristicas_test = Carac_norm(indice_test,Indice_clean);
+X_pca_test = (Caracteristicas_test-repmat(mean(Caracteristicas_test),size(Caracteristicas_test,1),1))*PCA_Matrix;
+
+Y1 = predict(Model1, X_pca_test);
+Y2 = predict(Model2, X_pca_test);
+
+
+% save('paso2.mat','caracteristicas','persona','labels_c','foto','Indice_SFS','Indice_clean');
 
 %% Modelos
 

@@ -1,7 +1,7 @@
 import numpy as num
 import matplotlib.pyplot as plots
 
-face_index = 40
+face_index = 120
 
 detected = num.load("faces_markers.npy")
 xy = detected[face_index]["xy"]

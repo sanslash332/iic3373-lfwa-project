@@ -1,3 +1,9 @@
 faces_lfwa_3/
 *.asv
 *.mat
+<<<<<<< HEAD
+=======
+faces_lfwa_3_eq/
+>>>>>>> 89e4f4087af74b2c95c8832975da4dead6c6026a
+*.mat
+all_data.mat

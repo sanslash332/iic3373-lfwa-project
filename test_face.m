@@ -1,9 +1,9 @@
 compile;
 
-image_index = 1;
+image_index = 1221;
 
 load face_p146_small.mat
-load('raw_faces_points.mat', 'detections')
+load('raw_faces_points_2.mat', 'detections')
 
 model.interval = 5;
 model.thresh = min(-0.65, model.thresh);

@@ -20,7 +20,6 @@ visualizemodel(model,1:13);
 disp('press any key to continue');
 pause;
 
-
 % 5 levels for each octave
 model.interval = 5;
 % set up the threshold

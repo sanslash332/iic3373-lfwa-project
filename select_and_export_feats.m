@@ -36,6 +36,7 @@ for ii = 1:length(face_points.detections)
   if(length(points) ~= 68)
     fprintf("  Could not process, skipping...\n");
     stru.success = 0;
+    
   else  
     img = imread(filename);
   
