@@ -17,7 +17,6 @@ fprintf("Patience...\n")
 X_holdout = full(mexOMP(Y_holdout,D_holdout,param));
 X_holdout = X_holdout';
 
-%%
 fprintf("Predicting person...\n")
 prediction_holdout = predict_from_X(D_holdout, X_holdout, Y_holdout, person_holdout);
 

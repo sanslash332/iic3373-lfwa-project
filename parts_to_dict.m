@@ -21,17 +21,15 @@ function [D, used_values] = parts_to_dict(data)
   
   used_values = find(valid_values);
   
-  D = zeros(index_off(end), nnz(used_values));
+  D = zeros(index_off(end)-1, nnz(used_values));
   
   for data_i = 1:length(used_values)
     c_data = data{used_values(data_i)};
     patches = c_data.data;
     for patch_i = 1:length(patches)
       p = patches{patch_i};
-      column = zeros(index_off(end), 1);
+      column = zeros(index_off(end)-1, 1);
       column(index_off(patch_i):(index_off(patch_i+1)-1)) = p(:);
-      plot(column)
-      pause
       D(:, (data_i-1)*length(patches) + patch_i) = column;
     end
   end

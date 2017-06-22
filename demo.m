@@ -16,9 +16,9 @@ load face_p146_small.mat
 % load multipie_independent.mat
 
 disp('Model visualization');
-%visualizemodel(model,1:13);
-%disp('press any key to continue');
-%pause;
+visualizepoints(model,1:13);
+disp('press any key to continue');
+pause;
 
 
 % 5 levels for each octave
