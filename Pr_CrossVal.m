@@ -1,7 +1,7 @@
-function [Accuracy,CI] = Pr_CrossVal(features,persona,k,p,c)
+function [Accuracy,CI] = Pr_CrossVal(features,persona,k,p,ci)
 
-    %k = N° of Folds
-    % p N° of PCA Elements
+    %k = Nï¿½ of Folds
+    % p Nï¿½ of PCA Elements
     
     Carac_norm = Bft_norm(features,0);
     
@@ -31,12 +31,11 @@ function [Accuracy,CI] = Pr_CrossVal(features,persona,k,p,c)
         
     % CI, c=Interval Confidence
     
-        c = c;
         v = length(Accuracy);
         pm = mean(Accuracy);
         mu = pm;
         sigma = sqrt(pm*(1-pm)/size(features,1));
-        t = (1-c)/2;
+        t = (1-ci)/2;
         if v>20
             z = norminv(1-t);
         else
