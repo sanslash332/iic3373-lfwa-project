@@ -1,7 +1,7 @@
 function [Accuracy,CI] = Pr_CrossVal(features,persona,k,p,ci)
 
-    %k = N° of Folds
-    % p N° of PCA Elements
+    %k = Nï¿½ of Folds
+    % p Nï¿½ of PCA Elements
     
     Carac_norm = Bft_norm(features,0);
     

@@ -30,6 +30,11 @@ function [D, used_values] = parts_to_dict(data)
       p = patches{patch_i};
       column = zeros(index_off(end)-1, 1);
       column(index_off(patch_i):(index_off(patch_i+1)-1)) = p(:);
+<<<<<<< HEAD
+%       plot(column)
+%       pause
+=======
+>>>>>>> 89e4f4087af74b2c95c8832975da4dead6c6026a
       D(:, (data_i-1)*length(patches) + patch_i) = column;
     end
   end
