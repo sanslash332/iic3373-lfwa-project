@@ -14,7 +14,7 @@ for i = 1:length(face_points.detections)
   points(:,2) = 0.5*(points(:,2) + points(:,4));
   points = points(:,1:2);
   
-  fprintf('Equalizing: %d/%d: %s\n', i, length(ims), f);
+  fprintf('Equalizing: %d/%d: %s\n', i, length(face_points.detections), f);
   image = imread(char(sprintf('%s%s', source_folder, f)));
   
   R = zeros(size(image));
