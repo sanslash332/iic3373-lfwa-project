@@ -1,6 +1,6 @@
 b(1).name = 'lbp';
 b(1).options.type = 2;
-b(1).options.vdiv = 2;                  % one vertical divition
+b(1).options.vdiv = 4;                  % one vertical divition
 b(1).options.hdiv = 4;                  % one horizontal divition
 b(1).options.semantic = 0;              % classic LBP
 b(1).options.samples  = 8;              % number of neighbor samples
@@ -34,7 +34,7 @@ b(5).options.Mgabor  = 21;                % mask size
 b(5).options.show    = 0;  
 
 
-f = struct
+
 f.path          = char("./faces_lfwa_3_eq/");  % directory of the images
 f.prefix        = '*';
 f.extension     = '.png';

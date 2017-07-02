@@ -15,7 +15,7 @@ else
     error('Can not recognize this model');
 end
 
-ims = dir('faces_lfwa_3_eq/*.png');
+ims = dir('faces_lfwa_3_eq/.png');
 
 detections = {length(ims), 1};
 

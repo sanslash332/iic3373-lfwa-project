@@ -16,12 +16,12 @@ function [Accuracy,CI] = Pr_CrossVal(features,persona,k,p,ci)
         X_test =  Carac_norm(c.test(ii),:);
         Y_test = persona(c.test(ii));
         
-        Indice_clean = Bfs_clean(X_training);
-        Carac_clean = X_training(:,Indice_clean);
-        [PCA_Matrix,Score,~] = pca(Carac_clean,'NumComponents',p);
+%         Indice_clean = Bfs_clean(X_training);
+%         Carac_clean = X_training(:,Indice_clean);
+        [PCA_Matrix,Score,~] = pca(X_training,'NumComponents',p);
         Model = fitcdiscr(Score,Y_training,'DiscrimType','pseudoLinear');
         
-        Caracteristicas_test = X_test(:,Indice_clean);
+        Caracteristicas_test = X_test(:,:);
         X_pca_test = (Caracteristicas_test-repmat(mean(Caracteristicas_test),size(Caracteristicas_test,1),1))*PCA_Matrix;
         Y_predict = predict(Model, X_pca_test);
         
