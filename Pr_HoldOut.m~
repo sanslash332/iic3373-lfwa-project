@@ -1,0 +1,38 @@
+function [Accuracy] = Pr_HoldOut(features,foto,persona,k)
+    
+    %k = Nº PSA
+
+    Carac_norm = Bft_norm(features,0);
+    indice_training = logical(foto < 11);
+    indice_test = not(indice_training);
+    
+%     Indice_clean = Bfs_clean(Carac_norm(indice_training,:));
+%     Carac_clean = Carac_norm(indice_training,Indice_clean);
+    [PCA_Matrix,Score,~] = pca(Carac_norm(indice_training,:),'NumComponents',k);
+    
+    disp('Training model..... ');
+    Model{}.lda = fitcdiscr(Score,persona(indice_training),'DiscrimType','pseudoLinear');
+    Model.lda.name = 'LDA';
+    Model.qda = fitcdiscr(Score,persona(indice_training),'DiscrimType','diagquadratic');
+    Model.qda.name = 'qda';
+    Model.knn10 = ficknn(Score,persona(indice_training),'NumNeighbors',10);
+    Model.knn10.name = 'knn10';
+    Model.knn5 = ficknn(Score,persona(indice_training),'NumNeighbors',5);
+    Model.knn5.name = 'knn5'
+    
+%     tlda = templateDiscriminant('DiscrimType','pseudoLinear');
+%     Model = fitcecoc(Score,persona(indice_training),'Learners',tlda);
+
+    Caracteristicas_test = Carac_norm(indice_test,:);
+    X_pca_test = (Caracteristicas_test-repmat(mean(Caracteristicas_test),size(Caracteristicas_test,1),1))*PCA_Matrix;
+    
+    disp('Predicting and evaluating ');
+    
+    for k=1:numel(
+    
+    Y_predict = predict(Model, X_pca_test);
+    
+    Accuracy = Evaluate(persona(indice_test),Y_predict);
+    
+end
+    
