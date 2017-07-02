@@ -36,7 +36,7 @@ function [Accuracy,CI] = Pr_CrossVal(features,persona,k,p,ci)
         X_pca_test = (Caracteristicas_test-repmat(mean(Caracteristicas_test),size(Caracteristicas_test,1),1))*PCA_Matrix;
         
         for jj=1:length(Model)
-            Y_predict = predict(Model{k}.m , X_pca_test);
+            Y_predict = predict(Model{jj}.m , X_pca_test);
             Accuracy(ii,jj) = sum(diag(confusionmat(Y_test,Y_predict)))./length(Y_predict);
         end
         
