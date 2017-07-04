@@ -22,15 +22,15 @@ function [Accuracy,CI] = Pr_CrossVal(features,persona,k,p,ci)
         disp('Training model LDA..... ');
         Model{1}.m = fitcdiscr(Score,Y_training,'DiscrimType','pseudoLinear');
         Model{1}.name = 'LDA';
-        disp('Training model QDA..... ');
-        Model{2}.m = fitcdiscr(Score,Y_training,'DiscrimType','diagquadratic');
-        Model{2}.name = 'qda';
-        disp('Training model KNN10..... ');
-        Model{3}.m = fitcknn(Score,Y_training,'NumNeighbors',10);
-        Model{3}.name = 'knn10';
-        disp('Training model KNN5..... ');
-        Model{4}.m = fitcknn(Score,Y_training,'NumNeighbors',5);
-        Model{4}.name = 'knn5';
+%         disp('Training model QDA..... ');
+%         Model{2}.m = fitcdiscr(Score,Y_training,'DiscrimType','diagquadratic');
+%         Model{2}.name = 'qda';
+%         disp('Training model KNN10..... ');
+%         Model{3}.m = fitcknn(Score,Y_training,'NumNeighbors',10);
+%         Model{3}.name = 'knn10';
+%         disp('Training model KNN5..... ');
+%         Model{4}.m = fitcknn(Score,Y_training,'NumNeighbors',5);
+%         Model{4}.name = 'knn5';
         
         Caracteristicas_test = X_test(:,:);
         X_pca_test = (Caracteristicas_test-repmat(mean(Caracteristicas_test),size(Caracteristicas_test,1),1))*PCA_Matrix;
