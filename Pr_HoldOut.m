@@ -13,15 +13,15 @@ function [Accuracy] = Pr_HoldOut(features,foto,persona,k)
     disp('Training model LDA..... ');
     Model{1}.m = fitcdiscr(Score,persona(indice_training),'DiscrimType','pseudoLinear');
     Model{1}.name = 'LDA';
-    disp('Training model QDA..... ');
-    Model{2}.m = fitcdiscr(Score,persona(indice_training),'DiscrimType','diagquadratic');
-    Model{2}.name = 'qda';
-    disp('Training model KNN10..... ');
-    Model{3}.m = fitcknn(Score,persona(indice_training),'NumNeighbors',10);
-    Model{3}.name = 'knn10';
-    disp('Training model KNN5..... ');
-    Model{4}.m = fitcknn(Score,persona(indice_training),'NumNeighbors',5);
-    Model{4}.name = 'knn5';
+%     disp('Training model QDA..... ');
+%     Model{2}.m = fitcdiscr(Score,persona(indice_training),'DiscrimType','diagquadratic');
+%     Model{2}.name = 'qda';
+%     disp('Training model KNN10..... ');
+%     Model{3}.m = fitcknn(Score,persona(indice_training),'NumNeighbors',10);
+%     Model{3}.name = 'knn10';
+%     disp('Training model KNN5..... ');
+%     Model{4}.m = fitcknn(Score,persona(indice_training),'NumNeighbors',5);
+%     Model{4}.name = 'knn5';
     
 %     tlda = templateDiscriminant('DiscrimType','pseudoLinear');
 %     Model = fitcecoc(Score,persona(indice_training),'Learners',tlda);

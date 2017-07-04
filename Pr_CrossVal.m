@@ -6,7 +6,7 @@ function [Accuracy,CI] = Pr_CrossVal(features,persona,k,p,ci)
     Carac_norm = Bft_norm(features,0);
     
     c = cvpartition(persona,'KFold',k);
-    Accuracy = zeros(k,4);
+    Accuracy = zeros(k,1);
     disp('Working Folds.....')
     
     for ii=1:k
