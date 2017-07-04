@@ -26,8 +26,8 @@ b(4).options.show = 0;
 
 b(5).name = 'gabor';
 b(5).options.type = 2;
-b(5).options.Lgabor  = 8;                 % number of rotations
-b(5).options.Sgabor  = 8;                 % number of dilations (scale)
+b(5).options.Lgabor  = 4;                 % number of rotations
+b(5).options.Sgabor  = 4;                 % number of dilations (scale)
 b(5).options.fhgabor = 2;                 % highest frequency of interest
 b(5).options.flgabor = 0.1;               % lowest frequency of interest
 b(5).options.Mgabor  = 21;                % mask size
